@@ -25,6 +25,8 @@ jobs:
         with:
           python-version: 3.9
       - name: Install dependencies
+      env:
+       API_KEY: ${{ secrets.API_KEY }}
         run: |
           # pip更新
           python -m pip install --upgrade pip
