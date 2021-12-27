@@ -8,10 +8,10 @@ load_dotenv()
 
 # トークン等取得
 AK = os.environ.get('TWITTER_DOT_API_KEY')
-AS = os.environ['TWITTER_DOT_API_SECRET_KEY']
-AT = os.environ['TWITTER_DOT_ACCESS_TOKEN']
-ATS = os.environ['TWITTER_DOT_ACCESS_TOKEN_SECRET']
-BT = os.environ['TWITTER_DOT_BEARER_TOKEN']
+AS = os.environ.get('TWITTER_DOT_API_SECRET_KEY')
+AT = os.environ.get('TWITTER_DOT_ACCESS_TOKEN')
+ATS = os.environ.get('TWITTER_DOT_ACCESS_TOKEN_SECRET')
+BT = os.environ.get('TWITTER_DOT_BEARER_TOKEN')
 
 
 # Twitterオブジェクトの生成
