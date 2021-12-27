@@ -7,8 +7,8 @@ load_dotenv()
 class Line:
     def send_message(self, e):
         # LINEに必要なアクセストークンと、ユーザID取得
-        CHANNEL_ACCESEE__TOKEN = os.environ['CHANNEL_ACCESEE__TOKEN']
-        USER_ID = os.environ['USER_ID']
+        CHANNEL_ACCESEE__TOKEN = os.environ.get('CHANNEL_ACCESEE__TOKEN')
+        USER_ID = os.environ.get('USER_ID')
         line_bot_api = LineBotApi(CHANNEL_ACCESEE__TOKEN)
 
         # メッセージ
