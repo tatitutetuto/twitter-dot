@@ -8,7 +8,7 @@ class Scraping:
     def get_dot_info(self):
         # APIでDOTの情報取得
         cmc = CoinMarketCapAPI(os.environ.get('COIN_MARKET_CAP_API_KEY'))
-        # AK = os.environ['COIN_MARKET_CAP_API_KEY']
+        print("cmc:" + cmc)
         res = cmc.cryptocurrency_quotes_latest(id=6636, convert='JPY')
         # print(res)
 
