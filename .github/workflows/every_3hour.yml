@@ -37,11 +37,11 @@ jobs:
           pip install python-dotenv
       - name: Run script
         env:
-           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-           API_KEY: ${{ secrets.API_KEY }}
-           API_SECRET_KEY: ${{ secrets.API_SECRET_KEY }}
-           BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+           ACCESS_TOKEN: ${{ secrets.TWITTER_DOT_ACCESS_TOKEN }}
+           ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_DOT_ACCESS_TOKEN_SECRET }}
+           API_KEY: ${{ secrets.TWITTER_DOT_API_KEY }}
+           API_SECRET_KEY: ${{ secrets.TWITTER_DOT_API_SECRET_KEY }}
+           BEARER_TOKEN: ${{ secrets.TWITTER_DOT_BEARER_TOKEN }}
            CHANNEL_ACCESEE__TOKEN: ${{ secrets.CHANNEL_ACCESEE__TOKEN }}
            COIN_MARKET_CAP_API_KEY: ${{ secrets.COIN_MARKET_CAP_API_KEY }}
            USER_ID: ${{ secrets.USER_ID }}
