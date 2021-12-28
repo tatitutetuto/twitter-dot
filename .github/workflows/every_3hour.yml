@@ -35,16 +35,16 @@ jobs:
           pip install requests requests_oauthlib
           pip install tweepy
           pip install python-dotenv
-        env:
-         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-         ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-         API_KEY: ${{ secrets.API_KEY }}
-         API_SECRET_KEY: ${{ secrets.API_SECRET_KEY }}
-         BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
-         CHANNEL_ACCESEE__TOKEN: ${{ secrets.CHANNEL_ACCESEE__TOKEN }}
-         COIN_MARKET_CAP_API_KEY: ${{ secrets.COIN_MARKET_CAP_API_KEY }}
-         USER_ID: ${{ secrets.USER_ID }}
       - name: Run script
+        env:
+           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+           API_KEY: ${{ secrets.API_KEY }}
+           API_SECRET_KEY: ${{ secrets.API_SECRET_KEY }}
+           BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+           CHANNEL_ACCESEE__TOKEN: ${{ secrets.CHANNEL_ACCESEE__TOKEN }}
+           COIN_MARKET_CAP_API_KEY: ${{ secrets.COIN_MARKET_CAP_API_KEY }}
+           USER_ID: ${{ secrets.USER_ID }}
         run: |
           # main.pyの実行
           python main.py
