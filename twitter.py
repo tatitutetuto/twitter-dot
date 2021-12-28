@@ -12,6 +12,7 @@ AS = os.environ.get('TWITTER_DOT_API_SECRET_KEY')
 AT = os.environ.get('TWITTER_DOT_ACCESS_TOKEN')
 ATS = os.environ.get('TWITTER_DOT_ACCESS_TOKEN_SECRET')
 BT = os.environ.get('TWITTER_DOT_BEARER_TOKEN')
+print("AK：" + str(AK))
 
 
 # Twitterオブジェクトの生成
