@@ -91,7 +91,7 @@ class Twitter:
                     "last_latest_tweet_id":tweet_id,
                     "last_cmc_rank":self.cmc_rank,
                 }
-                with open('/Users/yoshikawakei/Desktop/PythonTest/TwitterDot/last_info.json', 'w') as f:
+                with open('last_info.json', 'w') as f:
                     json.dump(last_info, f, ensure_ascii=False, indent=4)
 
             # 取得したツイートのいいね数が一定以上の場合、リツイート
