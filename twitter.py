@@ -128,7 +128,7 @@ class Twitter:
         content = ''
 
         # jsonファイル読み込み
-        json_open = open('/Users/yoshikawakei/Desktop/PythonTest/TwitterDot/last_info.json', 'r')
+        json_open = open('last_info.json', 'r')
         json_load = json.load(json_open)
         last_cmc_rank = json_load['last_cmc_rank']
         print('last_cmc_rank:' + str(last_cmc_rank))
