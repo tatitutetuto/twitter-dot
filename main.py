@@ -8,9 +8,17 @@ def main():
         scraping = sp.Scraping()
         price, cmc_rank, percent_change_24h = scraping.get_dot_info()
 
-        # ツイートする
-        twitter = tw.Twitter(price, cmc_rank, percent_change_24h)
+        # ニュース情報を取得
+        update_flg, news_title, news_url = scraping.get_news_url()
+        scraping.get_news_url()
+
+        # ポルカドットの情報をツイートする
+        twitter = tw.Twitter(price, cmc_rank, percent_change_24h, news_title, news_url)
         twitter.tweet_dot_info()
+
+        # ポルカドットの記事をツイートする
+        if update_flg == True:
+            twitter.tweet_dot_news()
 
         # リツイートする
         twitter.retweet()
