@@ -2,8 +2,6 @@ import scraping as sp
 import twitter as tw
 import line as ln
 
-
-# 変更したぜー
 def main():
     try:
         # 値段、時価総額ランクを取得
