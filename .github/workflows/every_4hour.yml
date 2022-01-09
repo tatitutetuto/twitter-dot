@@ -1,5 +1,5 @@
 # ワークフロー名
-name: every_3hour
+name: every_4hour
 
 # 発火タイミング
 # 日本時刻の朝7時に定期処理(分 時 日 月 曜日)
