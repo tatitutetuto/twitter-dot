@@ -9,7 +9,7 @@ name: every_3hour
 on:
 #   push:
   schedule:
-    - cron: '0 0-23/3 * * *　'
+    - cron: '0 0-23/4 * * *　'
 
 jobs:
   build:
