@@ -156,61 +156,61 @@ class Twitter:
             content =  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です。\n\n'
-            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
             if self.cmc_rank < int(last_cmc_rank):
                 content =  f'【時価総額ランキング上昇！！！】\n'
                 content += f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
                 content += f'これは24時間前に比べて{self.percent_change_24h}%です。\n\n'
-                content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+                content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
         elif 0 < self.percent_change_24h < 6:
             content =  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて+{self.percent_change_24h}%です。\n\n'
-            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
             if self.cmc_rank < int(last_cmc_rank):
                 content =  f'【時価総額ランキング上昇！！！】\n'
                 content += f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
                 content += f'値段は{self.price}円です。\n'
                 content += f'これは24時間前に比べて{self.percent_change_24h}%です。\n\n'
-                content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+                content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
              
         elif 6 <= self.percent_change_24h < 10:
             content = '【いい調子♪】\n'
             content += f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です！\n\n'
-            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
         elif 10 <= self.percent_change_24h < 20:
             content = '【きてます！!！】\n'
             content += f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です！！\n\n'
-            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
         elif 20 <= self.percent_change_24h < 30:
             content = '【うぉおおぉお仕事辞めてえ！！！！！！】\n'
             content += f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です！！\n\n'
-            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
         elif 30 <= self.percent_change_24h < 60:
             content = '【よっしゃあぁあああああ！！！！仕事辞めそう！！！！】\n'
             content +=  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です！！！\n\n'
-            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
         elif 60 <= self.percent_change_24h < 100:
             content = '【【うああああおあああああおおああああああああ仕事辞める！！！！！！！】\n'
             content +=  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です！！！！\n\n'
-            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
         elif 100 <= self.percent_change_24h:
             content = '最高の景色や・・・\n'
@@ -218,7 +218,7 @@ class Twitter:
             content =  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です。\n\n'
-            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3' 
+            content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
         return content
 
