@@ -206,7 +206,7 @@ class Twitter:
             content +=  '#ポルカドット #Polkadot #DOT #仮想通貨 #web3 #暗号資産' 
 
         elif 60 <= self.percent_change_24h < 100:
-            content = '【【うああああおあああああおおああああああああ仕事辞める！！！！！！！】\n'
+            content = '【うああああおあああああおおああああああああ仕事辞める！！！！！！！】\n'
             content +=  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です！！！！\n\n'
