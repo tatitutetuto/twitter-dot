@@ -31,13 +31,38 @@ class Twitter:
     ## ポルカドットの情報をCMCから取得する
     ##
     def tweet_dot_info(self):
+         # 前回の時価総額ランキングを取得
+        last_cmc_rank = self.get_last_tweet()
+        
         # ツイート内容
-        content = self.get_tweet_content()
+        content = self.get_tweet_content(last_cmc_rank)
         print(content)
 
         # ツイートを投稿
         res = client.create_tweet(text=content)
         # print(res)
+        
+    ##
+    ## 前回の時価総額ランキングを取得する
+    ##
+    def get_last_tweet(self):
+        # 過去ツイート取得
+        url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+        params = {'count':1}
+        res = twitter_api.get(url, params=params)
+        timeline = json.loads(res.text)
+
+        # ツイート内容加工
+        tweet_content = timeline[0]['text']
+        target_end = '位です。'
+        idx_end = tweet_content.find(target_end)
+
+        target_start = 'ランキングは'
+        idx_start = tweet_content.find(target_start)
+        last_cmc_rank = tweet_content[idx_start+len(target_start):idx_end] 
+        print("last_cmc_rank：" + last_cmc_rank)
+     
+        return last_cmc_rank
 
 
     ##
@@ -124,14 +149,8 @@ class Twitter:
     ##
     ## ツイート内容を取得する
     ##
-    def get_tweet_content(self):
+    def get_tweet_content(self, last_cmc_rank):
         content = ''
-
-        # jsonファイル読み込み
-        json_open = open('last_info.json', 'r')
-        json_load = json.load(json_open)
-        last_cmc_rank = json_load['last_cmc_rank']
-        print('last_cmc_rank:' + str(last_cmc_rank))
 
         if self.percent_change_24h < 0:
             content =  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
