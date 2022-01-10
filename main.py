@@ -21,7 +21,7 @@ def main():
             twitter.tweet_dot_news()
 
         # リツイートする
-        twitter.retweet()
+        # twitter.retweet()
 
         # DMをLINEで通知する
         # twitter.info_direct_message()
