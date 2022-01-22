@@ -161,6 +161,7 @@ class Twitter:
             if self.cmc_rank < int(last_cmc_rank):
                 content =  f'【時価総額ランキング上昇！！！】\n'
                 content += f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
+                content += f'値段は{self.price}円です。\n'
                 content += f'これは24時間前に比べて{self.percent_change_24h}%です。\n\n'
                 content +=  '#DOT #暗号資産' 
 
