@@ -86,8 +86,8 @@ class Scraping:
             if article_date == date_time or article_date == date_time_m1 or article_date == date_time_m2:
                 
                 # タイトル、URLを取得
-                news_url = article_items[i-1].a.get("href")
-                article_title = article_items[i-1].img.get('alt')
+                news_url = article_items[i].a.get("href")
+                article_title = article_items[i].img.get('alt')
                 update_flg = True
 
 
