@@ -59,7 +59,8 @@ class Twitter:
 
         target_start = 'ランキングは'
         idx_start = tweet_content.find(target_start)
-        last_cmc_rank = tweet_content[idx_start+len(target_start):idx_end] 
+#         last_cmc_rank = tweet_content[idx_start+len(target_start):idx_end] 
+        last_cmc_rank = 11
         print("last_cmc_rank：" + last_cmc_rank)
      
         return last_cmc_rank
