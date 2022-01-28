@@ -72,7 +72,7 @@ class Twitter:
         # ツイート内容
         content = '【関連ニュース】\n'
         content +=  f'{self.news_title}\n\n'
-        content =  f'{self.news_url}'
+        content +=  f'{self.news_url}'
         
         print(content)
 
@@ -216,7 +216,7 @@ class Twitter:
         elif 100 <= self.percent_change_24h:
             content = '最高の景色や・・・\n'
             content +=  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
-            content =  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
+            content +=  f'現在のポルカドットの時価総額ランキングは{self.cmc_rank}位です。\n'
             content += f'値段は{self.price}円です。\n'
             content += f'これは24時間前に比べて{self.percent_change_24h}%です。\n\n'
             content +=  '#DOT #暗号資産' 
