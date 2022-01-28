@@ -72,6 +72,7 @@ class Twitter:
         # ツイート内容
         content = '【関連ニュース】\n'
         content +=  f'{self.news_title}\n\n'
+        content +=  '#DOT #暗号資産\n' 
         content +=  f'{self.news_url}'
         
         print(content)
