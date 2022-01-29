@@ -47,20 +47,20 @@ class Twitter:
     ##
     def get_last_tweet(self):
         # 過去ツイート取得
-#         url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
-#         params = {'count':1}
-#         res = twitter_api.get(url, params=params)
-#         timeline = json.loads(res.text)
+        url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+        params = {'count':1}
+        res = twitter_api.get(url, params=params)
+        timeline = json.loads(res.text)
 
-#         # ツイート内容加工
-#         tweet_content = timeline[0]['text']
-#         target_end = '位です。'
-#         idx_end = tweet_content.find(target_end)
+        # ツイート内容加工
+        tweet_content = timeline[0]['text']
+        target_end = '位です。'
+        idx_end = tweet_content.find(target_end)
 
-#         target_start = 'ランキングは'
-#         idx_start = tweet_content.find(target_start)
-#         last_cmc_rank = tweet_content[idx_start+len(target_start):idx_end] 
-        last_cmc_rank = str(11)
+        target_start = 'ランキングは'
+        idx_start = tweet_content.find(target_start)
+        last_cmc_rank = tweet_content[idx_start+len(target_start):idx_end] 
+#         last_cmc_rank = str(11)
         print("last_cmc_rank：" + last_cmc_rank)
      
         return last_cmc_rank
