@@ -11,14 +11,14 @@ def main():
         # ニュース情報を取得
         update_flg, news_title, news_url = scraping.get_news_url()
         scraping.get_news_url()
-
-        # ポルカドットの情報をツイートする
-        twitter = tw.Twitter(price, cmc_rank, percent_change_24h, news_title, news_url)
-        twitter.tweet_dot_info()
-
+        
         # ポルカドットの記事をツイートする
+        twitter = tw.Twitter(price, cmc_rank, percent_change_24h, news_title, news_url)
         if update_flg == True:
             twitter.tweet_dot_news()
+
+        # ポルカドットの情報をツイートする
+        twitter.tweet_dot_info()
 
         # リツイートする
         # twitter.retweet()
