@@ -19,13 +19,10 @@ client = tweepy.Client(BT, AK, AS, AT, ATS)
 twitter_api =  OAuth1Session(AK, AS, AT, ATS)
 
 class Twitter:
-    def __init__(self, price, cmc_rank, percent_change_24h, news_title, news_url):
+    def __init__(self, price, cmc_rank, percent_change_24h):
         self.price = price
         self.cmc_rank = cmc_rank
         self.percent_change_24h = percent_change_24h
-
-        self.news_title = news_title
-        self.news_url = news_url
 
     ##
     ## ポルカドットの情報をCMCから取得する
@@ -69,12 +66,12 @@ class Twitter:
     ##
     ## ポルカドットの情報をツイートする
     ##
-    def tweet_dot_news(self):
+    def tweet_dot_news(self, news_title, news_url):
         # ツイート内容
         content = '【関連ニュース】\n'
-        content +=  f'{self.news_title}\n\n'
+        content +=  f'{news_title}\n\n'
         content +=  '#DOT #暗号資産\n' 
-        content +=  f'{self.news_url}'
+        content +=  f'{news_url}'
         
         print(content)
 
