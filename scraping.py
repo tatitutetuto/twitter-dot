@@ -67,11 +67,13 @@ class Scraping:
         # 現在時刻から-3時間までの時刻を取得
         date_time = datetime.datetime.now()
         date_time_m1 = date_time + datetime.timedelta(hours=-1)
-        date_time_m1 = date_time.strftime("%Y/%m/%d %H")
+        date_time_m1 = date_time_m1.strftime("%Y/%m/%d %H")
 
         date_time_m2 = date_time + datetime.timedelta(hours=-2)
-        date_time_m2 = date_time.strftime("%Y/%m/%d %H")
-        print(date_time_m1)
+        date_time_m2 = date_time_m2.strftime("%Y/%m/%d %H")
+        
+        date_time_m3 = date_time + datetime.timedelta(hours=-3)
+        date_time_m3 = date_time_m3.strftime("%Y/%m/%d %H")
 
         # date_time = '2021/12/20 18'
 
@@ -83,7 +85,7 @@ class Scraping:
             article_date = article_date[:idx] 
 
             # 存在する場合
-            if article_date == date_time or article_date == date_time_m1 or article_date == date_time_m2:
+            if article_date == date_time or article_date == date_time_m1 or article_date == date_time_m2 or article_date == date_time_m3:
                 
                 # タイトル、URLを取得
                 news_url = article_items[i].a.get("href")
