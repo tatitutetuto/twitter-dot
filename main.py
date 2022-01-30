@@ -8,10 +8,10 @@ def main():
         scraping = sp.Scraping()
         price, cmc_rank, percent_change_24h = scraping.get_dot_info()
 
-        # bittimesニュースを取得
+        # BITTIMESの記事を取得
         bittimes_update_flg, bittimes_news_title, bittimes_news_url = scraping.get_bittimes_news()
         
-        # Yahooニュースを取得
+        # Yahoo記事を取得
         yahoo_update_flg, yahoo_news_title, yahoo_news_url = scraping.get_yahoo_news()
         
         # BITTIMESの記事をツイートする
