@@ -48,13 +48,13 @@ class Scraping:
 
 
     ##
-    ## ポルカドットの関連ニュースを取得する
+    ## BITTIMESの記事を取得する
     ##
-    def get_news_url(self):
+    def get_bittimes_news(self):
         # 変数初期化
-        update_flg = False
-        article_title = ''
-        news_url = ''
+        bittimes_update_flg = False
+        bittimes_news_title = ''
+        bittimes_news_url = ''
 
         #　スクレイピング準備
         res = requests.get(config.BITTIMES_URL)
@@ -88,14 +88,74 @@ class Scraping:
             if article_date == date_time or article_date == date_time_m1 or article_date == date_time_m2 or article_date == date_time_m3:
                 
                 # タイトル、URLを取得
-                news_url = article_items[i].a.get("href")
-                article_title = article_items[i].img.get('alt')
-                update_flg = True
+                bittimes_news_url = article_items[i].a.get("href")
+                bittimes_news_title = article_items[i].img.get('alt')
+                bittimes_update_flg = True
 
 
-        print(update_flg)
-        print(article_title)
-        print(news_url)
+        print(bittimes_update_flg)
+        print(bittimes_news_title)
+        print(bittimes_news_url)
 
-        return update_flg, article_title, news_url
+        return bittimes_update_flg, bittimes_news_title, bittimes_news_url
     
+    ##
+    ## Yahooの記事を取得する
+    ##
+    def get_yahoo_news(self):
+        # 変数初期化
+        yahoo_update_flg = False
+        yahoo_news_title = ''
+        yahoo_news_url = ''
+
+        #　スクレイピング準備
+        res = requests.get(config.YAHOO_URL)
+        soup = BeautifulSoup(res.text, 'html.parser')
+
+        # 記事時刻取得
+        article_date_items = soup.find_all('time', class_='newsFeed_item_date')
+        article_date = article_date_items[0].text
+        idx = article_date.find(':')
+        article_date = article_date[:idx] 
+        print("article_date:" + article_date)
+
+        # 現在時刻取得
+        t_delta = datetime.timedelta(hours=9)
+        JST = datetime.timezone(t_delta, 'JST')
+        now = datetime.datetime.now(JST)
+
+        d_week = {'Sun': '日', 'Mon': '月', 'Tue': '火', 'Wed': '水',
+            'Thu': '木', 'Fri': '金', 'Sat': '土'}
+        key = now.strftime('%a')
+        w = d_week[key]
+        date_time = now.strftime('%-m/%-d') + f'({w}) ' + now.strftime('%H')
+        print(date_time)
+        
+        # 現在時刻から-4時間までの時刻を取得
+        date_time_m1 = now + datetime.timedelta(hours=-1)
+        date_time_m1 = date_time_m1.strftime('%-m/%-d') + f'({w}) ' + date_time_m1.strftime('%H')
+
+        date_time_m2 = now + datetime.timedelta(hours=-2)
+        date_time_m2 = date_time_m2.strftime('%-m/%-d') + f'({w}) ' + date_time_m2.strftime('%H')
+
+        date_time_m3 = now + datetime.timedelta(hours=-3)
+        date_time_m3 = date_time_m3.strftime('%-m/%-d') + f'({w}) ' + date_time_m3.strftime('%H')
+
+        # date_time = '1/28(金) 13'
+        # 過去4時間以内に記事が更新されている場合
+        if article_date == date_time or article_date == date_time_m1 or article_date == date_time_m2 or article_date == date_time_m3:
+            
+            # フラグを立てる
+            yahoo_update_flg = True
+            
+            # 記事タイトルを取得
+            article_title_items = soup.find_all('div', class_='newsFeed_item_title')
+            yahoo_news_title = article_title_items[0].text
+            print("yahoo_news_title:" + yahoo_news_title)
+
+            # 記事URL取得
+            article_url_items = soup.find_all('a', class_='newsFeed_item_link')
+            yahoo_news_url = article_url_items[0].get("href")
+            print("yahoo_news_url:" + yahoo_news_url)
+
+        return yahoo_update_flg, yahoo_news_title, yahoo_news_url
