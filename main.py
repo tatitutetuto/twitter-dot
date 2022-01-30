@@ -11,17 +11,17 @@ def main():
         # BITTIMESの記事を取得
         bittimes_update_flg, bittimes_news_title, bittimes_news_url = scraping.get_bittimes_news()
         
+        # BITTIMESの記事をツイートする
+        twitter = tw.Twitter(price, cmc_rank, percent_change_24h)
+        if bittimes_update_flg == True:
+            twitter.tweet_dot_news(bittimes_news_title, bittimes_news_url)
+        
         # Yahoo記事を取得
         yahoo_update_flg, yahoo_news_title, yahoo_news_url = scraping.get_yahoo_news()
         
-        # BITTIMESの記事をツイートする
-        twitter = tw.Twitter(price, cmc_rank, percent_change_24h, bittimes_news_title, bittimes_news_url, yahoo_news_title, yahoo_news_url)
-        if bittimes_update_flg == True:
-            twitter.tweet_dot_news()
-            
         # Yahoo記事をツイートする
         if yahoo_update_flg == True:
-            twitter.tweet_dot_news()
+            twitter.tweet_dot_news(yahoo_news_title, yahoo_news_url)
 
         # ポルカドットの情報をツイートする
         twitter.tweet_dot_info()
