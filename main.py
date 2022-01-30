@@ -8,13 +8,19 @@ def main():
         scraping = sp.Scraping()
         price, cmc_rank, percent_change_24h = scraping.get_dot_info()
 
-        # ニュース情報を取得
-        update_flg, news_title, news_url = scraping.get_news_url()
-        scraping.get_news_url()
+        # bittimesニュースを取得
+        bittimes_update_flg, bittimes_news_title, bittimes_news_url = scraping.get_bittimes_news()
         
-        # ポルカドットの記事をツイートする
-        twitter = tw.Twitter(price, cmc_rank, percent_change_24h, news_title, news_url)
-        if update_flg == True:
+        # Yahooニュースを取得
+        yahoo_update_flg, yahoo_news_title, yahoo_news_url = scraping.get_yahoo_news()
+        
+        # BITTIMESの記事をツイートする
+        twitter = tw.Twitter(price, cmc_rank, percent_change_24h, bittimes_news_title, bittimes_news_url, yahoo_news_title, yahoo_news_url)
+        if bittimes_update_flg == True:
+            twitter.tweet_dot_news()
+            
+        # Yahoo記事をツイートする
+        if yahoo_update_flg == True:
             twitter.tweet_dot_news()
 
         # ポルカドットの情報をツイートする
