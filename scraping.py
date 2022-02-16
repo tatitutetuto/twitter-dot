@@ -128,7 +128,7 @@ class Scraping:
             'Thu': '木', 'Fri': '金', 'Sat': '土'}
         key = now.strftime('%a')
         w = d_week[key]
-        date_time = now.strftime('%-m/%-d') + f'({w}) ' + now.strftime('%H')
+        date_time = now.strftime('%-m/%-d') + f'({w}) ' + str(int(now.strftime('%H')))
         print(date_time)
         
         # 現在時刻から-4時間までの時刻を取得
