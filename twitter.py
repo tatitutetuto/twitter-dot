@@ -29,7 +29,7 @@ class Twitter:
     ##
     def tweet_dot_info(self):
          # 前回の時価総額ランキングを取得
-        last_cmc_rank = self.get_last_tweet()
+        last_cmc_rank, last_tweet_id = self.get_last_tweet()
         
         # ツイート内容
         content = self.get_tweet_content(last_cmc_rank)
@@ -38,6 +38,7 @@ class Twitter:
         # ツイートを投稿
         res = client.create_tweet(text=content)
         # print(res)
+        return last_tweet_id
         
     ##
     ## 前回の時価総額ランキングを取得する
@@ -49,6 +50,7 @@ class Twitter:
         res = twitter_api.get(url, params=params)
         timeline = json.loads(res.text)
         last_cmc_rank = ''
+        last_tweet_id = ''
 
         # ツイート内容加工　5ツイート遡って、最新の時価総額ランキングを調べる
         for i in range(5):
@@ -64,10 +66,11 @@ class Twitter:
 
             # 時価総額ツイートがあれば、ループ抜ける
             if(idx_end != -1):
+                last_tweet_id = int(timeline[i]['id_str'])
                 break
         
         print("last_cmc_rank：" + last_cmc_rank)
-        return last_cmc_rank
+        return last_cmc_rank, last_tweet_id
 
 
     ##
@@ -90,54 +93,45 @@ class Twitter:
     ##
     ## リツイートする
     ##
-    def retweet(self):
-        # 前回作成ファイル読み込み　
-        json_open = open('last_info.json', 'r')
-        json_load = json.load(json_open)
-        since_id = json_load['last_latest_tweet_id']
-
+    def retweet(self, last_tweet_id):
+        last_tweet_id = str(last_tweet_id)
         # 検索API叩く , 'since_id':since_id
         url = 'https://api.twitter.com/1.1/search/tweets.json'
-        params = {'q':config.SEARCH_WORD, 'lang':'ja', 'count':config.GET_TWEET_COUNT}
+        params = {
+            'q':config.SEARCH_WORD
+            , 'lang':'ja'
+            , 'result_type':'recent'
+            , 'since_id':last_tweet_id
+        }
         res = twitter_api.get(url, params=params)
     
         # 返却値json読み込み
         res = json.loads(res.text)
+        news_count = len(res['statuses'])
         res_list = res['statuses']
         res_list_size = len(res_list)
 
+        if (news_count != 0):
         # 取得したツイートを回す
-        for res_row in range(res_list_size):
-            tweet_id = res_list[res_row]['id_str']
-            favorite_count = res_list[res_row]['favorite_count']
-            text = res_list[res_row]['text']
-            print('tweet_id:' + tweet_id)
-            print('favorite_count:' + str(favorite_count))
-            print('text:' + text)
-            print('----------------------------------------------')
+            for res_row in range(res_list_size):
+                tweet_id = res_list[res_row]['id_str']
+                text = res_list[res_row]['text']
+                print('tweet_id:' + tweet_id)
+                print('text:' + text)
+                print('----------------------------------------------')
 
-            # 一番最初(一番新しい)ツイートIDをjsonに保持
-            if res_row == 0:
-                last_info = {
-                    "last_latest_tweet_id":tweet_id,
-                    "last_cmc_rank":self.cmc_rank,
-                }
-                with open('last_info.json', 'w') as f:
-                    json.dump(last_info, f, ensure_ascii=False, indent=4)
+                if ('ポルカドット' in text or 'DOT' in text):
+                    # リツイートAPI叩く
+                    url = 'https://api.twitter.com/1.1/statuses/retweet/' + tweet_id + '.json'
 
-            # 取得したツイートのいいね数が一定以上の場合、リツイート
-            if favorite_count >= config.FAVORITE_COUNT:
-                # 検索API叩く
-                url = 'https://api.twitter.com/1.1/statuses/retweet/' + tweet_id + '.json'
+                    # リツイートパラメータ設定
+                    params = {
+                        'id' : tweet_id
+                        ,'include_entities' : ''
+                    }
 
-                # リツイートパラメータ設定
-                params = {
-                    'id' : tweet_id
-                    ,'include_entities' : ''
-                }
-
-                res = twitter_api.post(url, params=params)
-                print(res)
+                    # リツイート
+                    res = twitter_api.post(url, params=params)
 
 
     ##
