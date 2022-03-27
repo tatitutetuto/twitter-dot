@@ -24,10 +24,10 @@ def main():
             twitter.tweet_dot_news(yahoo_news_title, yahoo_news_url)
 
         # ポルカドットの情報をツイートする
-        twitter.tweet_dot_info()
+        last_tweet_id = twitter.tweet_dot_info()
 
         # リツイートする
-        # twitter.retweet()
+        twitter.retweet(last_tweet_id)
 
         # DMをLINEで通知する
         # twitter.info_direct_message()
