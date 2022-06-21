@@ -29,11 +29,17 @@ class Twitter:
     ##
     def tweet_dot_info(self):
          # 前回の時価総額ランキングを取得
-        last_cmc_rank, last_tweet_id = self.get_last_tweet()
+        last_cmc_rank, last_tweet_id, last_tweet_content = self.get_last_tweet()
         
         # ツイート内容
         content = self.get_tweet_content(last_cmc_rank)
         print(content)
+        
+        # 前回ツイート内容と今回ツイート内容を比較
+        if (last_tweet_content == content) {
+            // 全く同じ場合空文字を末尾に追加
+            content += ' '
+        }
 
         # ツイートを投稿
         res = client.create_tweet(text=content)
@@ -70,7 +76,7 @@ class Twitter:
                 break
         
         print("last_cmc_rank：" + last_cmc_rank)
-        return last_cmc_rank, last_tweet_id
+        return last_cmc_rank, last_tweet_id, tweet_content
 
 
     ##
