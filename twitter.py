@@ -36,7 +36,7 @@ class Twitter:
         print(content)
         
         # 前回ツイート内容と今回ツイート内容を比較
-        if (last_tweet_content == content) {
+        if (str(last_tweet_content) == str(content)) {
             // 全く同じ場合空文字を末尾に追加
             content += ' '
         }
