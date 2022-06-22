@@ -35,12 +35,10 @@ class Twitter:
         content = self.get_tweet_content(last_cmc_rank)
         print(content)
         
-#           なんかエラーになる(SyntaxError: invalid syntax) by if (str(last_tweet_content) == str(content)) {
-#         # 前回ツイート内容と今回ツイート内容を比較
-#         if (str(last_tweet_content) == str(content)) {
-#             // 全く同じ場合空文字を末尾に追加
-#             content += ' '
-#         }
+        # 前回ツイート内容と今回ツイート内容を比較
+        if last_tweet_content == content:
+            # 全く同じ場合空文字を末尾に追加
+            content += ' '
 
         # ツイートを投稿
         res = client.create_tweet(text=content)
