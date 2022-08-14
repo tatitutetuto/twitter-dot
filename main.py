@@ -31,7 +31,6 @@ def main():
 
         # DMをLINEで通知する
         # twitter.info_direct_message()
-        
 
     except Exception as e:
         print(e)
